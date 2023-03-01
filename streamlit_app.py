@@ -120,9 +120,9 @@ def update_query_params():
 
 
 with row1_1:
-    st.title("NYC ウーバー Ridesharing Data")
+    st.title("ニューヨーク市でのウーバー使用状況")
     hour_selected = st.slider(
-        "Select hour of pickup", 0, 23, key="pickup_hour", on_change=update_query_params
+        "時間帯", 0, 23, key="pickup_hour", on_change=update_query_params
     )
 
 
@@ -130,8 +130,8 @@ with row1_2:
     st.write(
         """
     ##
-    Examining how Uber pickups vary over time in New York City's and at its major regional airports.
-    By sliding the slider on the left you can view different slices of time and explore different transportation trends.
+    ニューヨーク市と近郊の空港に於けるUber使用状況を時間帯で表示します。
+    スライダーを使って0時から23時の間で時間帯を指定してください。
     """
     )
 
@@ -147,20 +147,20 @@ midpoint = mpoint(data["lat"], data["lon"])
 
 with row2_1:
     st.write(
-        f"""**All New York City from {hour_selected}:00 and {(hour_selected + 1) % 24}:00**"""
+        f"""**ニューヨーク市全体 {hour_selected}:00 から {(hour_selected + 1) % 24}:00 まで**"""
     )
     map(filterdata(data, hour_selected), midpoint[0], midpoint[1], 11)
 
 with row2_2:
-    st.write("**La Guardia Airport**")
+    st.write("**La Guardia 空港**")
     map(filterdata(data, hour_selected), la_guardia[0], la_guardia[1], zoom_level)
 
 with row2_3:
-    st.write("**JFK Airport**")
+    st.write("**JFK 空港**")
     map(filterdata(data, hour_selected), jfk[0], jfk[1], zoom_level)
 
 with row2_4:
-    st.write("**Newark Airport**")
+    st.write("**Newark 空港**")
     map(filterdata(data, hour_selected), newark[0], newark[1], zoom_level)
 
 # CALCULATING DATA FOR THE HISTOGRAM
@@ -168,7 +168,7 @@ chart_data = histdata(data, hour_selected)
 
 # LAYING OUT THE HISTOGRAM SECTION
 st.write(
-    f"""**Breakdown of rides per minute between {hour_selected}:00 and {(hour_selected + 1) % 24}:00**"""
+    f"""**{hour_selected}:00 から {(hour_selected + 1) % 24}:00 までの分毎の使用状況**"""
 )
 
 st.altair_chart(
@@ -180,6 +180,7 @@ st.altair_chart(
         x=alt.X("minute:Q", scale=alt.Scale(nice=False)),
         y=alt.Y("pickups:Q"),
         tooltip=["minute", "pickups"],
+        # TODO: localize tooltip names; altair asks to specify type for "分" and "件数"
     )
     .configure_mark(opacity=0.2, color="red"),
     use_container_width=True,
