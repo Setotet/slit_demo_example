@@ -22,7 +22,7 @@ import pydeck as pdk
 import streamlit as st
 
 # SETTING PAGE CONFIG TO WIDE MODE AND ADDING A TITLE AND FAVICON
-st.set_page_config(layout="wide", page_title="NYC Ridesharing Demo", page_icon=":taxi:")
+st.set_page_config(layout="wide", page_title="ニューヨーク市でのウーバー使用状況", page_icon=":taxi:")
 
 # LOAD DATA ONCE
 @st.cache_resource
@@ -130,7 +130,7 @@ with row1_2:
     st.write(
         """
     ##
-    ニューヨーク市と近郊の空港に於けるUber使用状況を時間帯で表示します。
+    ニューヨーク市と近郊の空港に於けるUber使用状況を1時間毎に表示します。
     スライダーを使って0時から23時の間で時間帯を指定してください。
     """
     )
