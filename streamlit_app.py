@@ -17,9 +17,12 @@
 
 import altair as alt
 import numpy as np
+import os
 import pandas as pd
 import pydeck as pdk
 import streamlit as st
+
+os.environ["STREAMLIT_BROWSER_GATHER_USAGE_STATS"] = "0"
 
 # SETTING PAGE CONFIG TO WIDE MODE AND ADDING A TITLE AND FAVICON
 st.set_page_config(layout="wide", page_title="ニューヨーク市でのウーバー使用状況", page_icon=":taxi:")
