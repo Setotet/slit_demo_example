@@ -22,6 +22,8 @@ import pandas as pd
 import pydeck as pdk
 import streamlit as st
 
+from pdb import set_trace
+
 os.environ["STREAMLIT_BROWSER_GATHER_USAGE_STATS"] = ""
 
 # SETTING PAGE CONFIG TO WIDE MODE AND ADDING A TITLE AND FAVICON
@@ -96,7 +98,7 @@ def histdata(df, hr):
 
     hist = np.histogram(filtered["date/time"].dt.minute, bins=60, range=(0, 60))[0]
 
-    return pd.DataFrame({"minute": range(60), "pickups": hist})
+    return pd.DataFrame({"分": range(60), "件数": hist})
 
 
 # STREAMLIT APP LAYOUT
@@ -180,10 +182,9 @@ st.altair_chart(
         interpolate="step-after",
     )
     .encode(
-        x=alt.X("minute:Q", scale=alt.Scale(nice=False)),
-        y=alt.Y("pickups:Q"),
-        tooltip=["minute", "pickups"],
-        # TODO: localize tooltip names; altair asks to specify type for "分" and "件数"
+        x=alt.X("分:Q", scale=alt.Scale(nice=False)),
+        y=alt.Y("件数:Q"),
+        tooltip=["分", "件数"],
     )
     .configure_mark(opacity=0.2, color="red"),
     use_container_width=True,
