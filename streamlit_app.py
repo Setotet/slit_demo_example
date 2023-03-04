@@ -104,9 +104,6 @@ def histdata(df, hr):
 # STREAMLIT APP LAYOUT
 data = load_data()
 
-# LAYING OUT THE TOP SECTION OF THE APP
-row1_1, row1_2 = st.columns((2, 3))
-
 # SEE IF THERE'S A QUERY PARAM IN THE URL (e.g. ?pickup_hour=2)
 # THIS ALLOWS YOU TO PASS A STATEFUL URL TO SOMEONE WITH A SPECIFIC HOUR SELECTED,
 # E.G. https://share.streamlit.io/streamlit/demo-uber-nyc-pickups/main?pickup_hour=2
@@ -123,21 +120,22 @@ def update_query_params():
     hour_selected = st.session_state["pickup_hour"]
     st.experimental_set_query_params(pickup_hour=hour_selected)
 
+# LAYING OUT THE TOP SECTION OF THE APP
+row1_1, row1_2 = st.columns((2, 2))
 
 with row1_1:
     st.title("ニューヨーク市でのウーバー使用状況")
-    hour_selected = st.slider(
-        "時間帯", 0, 23, key="pickup_hour", on_change=update_query_params
-    )
 
 
 with row1_2:
     st.write(
         """
     ##
-    ニューヨーク市と近郊の空港に於けるUber使用状況を1時間毎に表示します。
-    スライダーを使って0時から23時の間で時間帯を指定してください。
+    0時から23時のうち、1時間の時間帯を指定してください。
     """
+    )
+    hour_selected = st.slider(
+        "時間帯", 0, 23, key="pickup_hour", on_change=update_query_params
     )
 
 # LAYING OUT THE MIDDLE SECTION OF THE APP WITH THE MAPS
@@ -152,7 +150,7 @@ midpoint = mpoint(data["lat"], data["lon"])
 
 with row2_1:
     st.write(
-        f"""**ニューヨーク市全体 {hour_selected}:00 から {(hour_selected + 1) % 24}:00 まで**"""
+        f"""**{hour_selected}:00 から {(hour_selected + 1) % 24}:00 まで**"""
     )
     map(filterdata(data, hour_selected), midpoint[0], midpoint[1], 11)
 
