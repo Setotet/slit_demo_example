@@ -150,7 +150,7 @@ midpoint = mpoint(data["lat"], data["lon"])
 
 with row2_1:
     st.write(
-        f"""**{hour_selected}:00 から {(hour_selected + 1) % 24}:00 まで**"""
+        f"""**{hour_selected}:00 〜 {(hour_selected + 1) % 24}:00**"""
     )
     map(filterdata(data, hour_selected), midpoint[0], midpoint[1], 11)
 
@@ -171,7 +171,7 @@ chart_data = histdata(data, hour_selected)
 
 # LAYING OUT THE HISTOGRAM SECTION
 st.write(
-    f"""**{hour_selected}:00 から {(hour_selected + 1) % 24}:00 までの分毎の使用状況**"""
+    f"""**毎分の使用状況：{hour_selected}:00 〜 {(hour_selected + 1) % 24}:00**"""
 )
 
 st.altair_chart(
