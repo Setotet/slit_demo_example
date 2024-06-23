@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 Remember, an issue is not the place to ask questions. You can use our [Slack channel](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) for that, or you may want to consult the following Slack channels:
 
 - [#project-top10-for-llm](https://owasp.slack.com/archives/C05956H7R8R)
