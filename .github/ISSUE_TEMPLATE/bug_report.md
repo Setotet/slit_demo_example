@@ -6,22 +6,37 @@ labels: ''
 assignees: ''
 
 ---
+Remember, an issue is not the place to ask questions. You can use [#owasp_pdf_users](https://owasp.slack.com/archives/C07606V664W) for that.
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+#### Version of owasp_pdf executable you are using?
+```
+$ ./owasp_pdf -v
+OWASP_PDF Version: OWASP PDF v3.9.4 20240623-070711
+```
+----------------------------------------
+**OWASP_PDF Version:** 
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+#### Errcode?
+```
+[v3.9.4] [Errcode p1049] [<tag text>] <additional log ...>
+```
+----------------------------
+**Errcode:** 
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+#### Steps to Reproduce
+-------------------------------------------
+1. …
+2. …
+3. …
+
+#### What happens?
+-------------
+…
+
+#### What were you expecting to happen?
+----------------------------------
+…
 
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
